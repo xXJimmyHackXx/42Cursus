@@ -1,15 +1,14 @@
 .PHONY: fclean run
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-TARGET = libft
-SRCS = ft_isalpha.c 
-OBJS = $(SRCS:.c=.o)
+SOURCES = main.c
+TARGET = my_program
+OBJS = $(SOURCES:.c=.o)
 all: $(TARGET)
-run:
-    ./$(TARGET) | cat -e
 $(TARGET): $(OBJS)
-    $(CC) $(CFLAGS) -o $@ $^
+	@$(CC) $(CFLAGS) -o $@ $^
 %.o: %.c
-    $(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -c $<
+run: all
+	@./$(TARGET) | cat -e
 fclean:
-    rm -rf $(TARGET) *.o
+	rm -rf $(TARGET) *.o

@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/11 17:59:55 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/12 18:31:50 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,34 @@ unsigned long	ft_strlen(char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	char	*ptr;
+	size_t	i;
+
+	i = 0;
+	ptr = (char *)b;
+	while (i < len)
+	{
+		ptr[i] = c;
+		i++;
+	}
+
+	return (b);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t 			i;
+	unsigned char	*ptr;
+
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
 }
