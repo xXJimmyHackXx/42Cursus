@@ -6,14 +6,11 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/12 18:37:24 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:24:34 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libre.h"
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
 
 int	main(void)
 {

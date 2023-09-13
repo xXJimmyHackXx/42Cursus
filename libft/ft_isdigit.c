@@ -6,9 +6,11 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:37:28 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/11 17:41:43 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 11:30:28 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libre.h"
 
 int	ft_isdigit(int str)
 {
@@ -16,5 +18,5 @@ int	ft_isdigit(int str)
 		str++;
 	else
 		return (0);
-	return (7);
+	return (1);
 }
