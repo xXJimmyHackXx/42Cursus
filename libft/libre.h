@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 13:43:39 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:28:35 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int				ft_isprint(int str);
 unsigned long	ft_strlen(char *str);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
 
 #endif

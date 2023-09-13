@@ -1,5 +1,6 @@
 .PHONY: fclean run
 CC = cc
+CFLAGS = -Wall -Wextra -Werror
 SOURCES = main.c \
 		ft_bzero.c\
 		ft_isalnum.c\
@@ -21,8 +22,8 @@ $(PROGRAM): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-run: all
-	./$(PROGRAM) | cat -e
+r: all
+	@./$(PROGRAM) | cat -e
 
-clean:
+c:
 	rm -rf $(PROGRAM) *.o
