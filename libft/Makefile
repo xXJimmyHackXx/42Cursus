@@ -1,19 +1,19 @@
 .PHONY: fclean run
 CC = cc
 SOURCES = main.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memset.c ft_strlen.c
-TARGET = my_program
+PROGRAM = libft.a
 OBJS = $(SOURCES:.c=.o)
 
-all: $(TARGET)
+all: $(PROGRAM)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+$(PROGRAM): $(OBJS)
+	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: all
-	./$(TARGET) | cat -e
+	./$(PROGRAM) | cat -e
 
 fclean:
-	rm -rf $(TARGET) *.o
+	rm -rf $(PROGRAM) *.o

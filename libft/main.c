@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 11:24:34 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:50:08 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	main(void)
 	ft_bzero(str, 2);
 	printf("FT: %s\n", str);
 	printf("O: %s\n", bzero(str, 2));
-	printf("_______\n");
+	printf("MEMCPY\n");
+	printf("FT :")
 }

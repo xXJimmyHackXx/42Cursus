@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 17:41:15 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 12:50:43 by jagarci2         ###   ########.fr       */
+/*   Created: 2023/09/13 12:45:01 by jagarci2          #+#    #+#             */
+/*   Updated: 2023/09/13 12:48:16 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libre.h"
+#include "libc.h"
 
-int	ft_isprint(int str)
+void	*memcpy(void *restrict dst, const void *src, size_t n)
 {
-	if (str >= 32 && str <= 126)
-		str++;
-	else
-		return (0);
-	return (1);
+	
 }
