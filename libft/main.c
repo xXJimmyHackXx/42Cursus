@@ -6,15 +6,18 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 12:55:55 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:45:47 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libre.h"
+#include <stdio.h>
 
 int	main(void)
 {
 	char	str[] = "hola, que tal";
+	char	mstr[] = "hola, que tal";
+	char	estr[14] = "";
 
 	printf("\n");
 	printf("ISALNUM\n");
@@ -38,10 +41,12 @@ int	main(void)
 	printf("MEMSET\n");
 	printf("FT: %s\n", ft_memset(str, '$', 5));
 	printf("O: %s\n", memset(str, '$', 5));
+	
+	printf("MEMCPY\n");
+	printf("FT: %ds\n", ft_memcpy(estr, str, sizeof(str)));
+	printf("%s\n", memcpy(estr, mstr, sizeof(mstr)));
 	printf("BZERO\n");
 	ft_bzero(str, 2);
 	printf("FT: %s\n", str);
 	printf("O: %s\n", bzero(str, 2));
-	printf("MEMCPY\n");
-	printf("FT : %s\n", ft_memcpy())
 }

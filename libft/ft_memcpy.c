@@ -6,13 +6,29 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:45:01 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 12:48:16 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:36:35 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libc.h"
+#include "libre.h"
 
-void	*memcpy(void *restrict dst, const void *src, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *src, size_t n)
 {
-	
+	unsigned const char	*s;
+	unsigned char		*d;
+	size_t				i;
+
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	i = 0;
+	while (dst == src || !n)
+	{
+		return (dst);
+	}
+	while (n > i)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
 }

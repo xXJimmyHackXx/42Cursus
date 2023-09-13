@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 11:24:13 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:43:39 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBRE_H
 
 # include <ctype.h>
-# include <stdio.h>
 # include <string.h>
 
 int				ft_isalpha(int str);
