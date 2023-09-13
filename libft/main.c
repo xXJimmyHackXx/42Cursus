@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 18:37:35 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:52:36 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 int	main(void)
 {
-	char	str[] = "hola, que tal";
-	char	memstr[] = "hola, que tal";
+	char	bzero[] = "hola, que tal";
+	char	mset[] = "hola, que tal";
 	char	mstr2[] = "hola, que tal";
 	char	emstr2[100];
-	char	str2[] = "hola, que tal";
-	char	estr2[100];
+	char	mcpy[] = "hola, que tal";
+	char	emcpy[100];
 
 	printf("\n");
 	printf("ISALNUM\n");
@@ -42,14 +42,14 @@ int	main(void)
 	printf("FT: %lu\n", ft_strlen("balablab"));
 	printf("O: %lu\n", strlen("balablab"));
 	printf("MEMSET\n");
-	printf("FT: %s\n", ft_memset(memstr, '$', 5));
-	printf("O: %s\n", memset(memstr, '$', 5));
+	printf("FT: %s\n", ft_memset(mset, '$', 5));
+	printf("O: %s\n", memset(mset, '$', 5));
 	printf("MEMCPY\n");
-	ft_memcpy(estr2, str2, sizeof(str2));
-	printf("FT: %s\n", estr2);
+	ft_memcpy(emcpy, mcpy, sizeof(mcpy));
+	printf("FT: %s\n", emcpy);
 	printf("O: %s\n", memcpy(emstr2, mstr2, sizeof(mstr2)));
 	printf("BZERO\n");
-	ft_bzero(str, 2);
-	printf("FT: %s\n", str);
-	printf("O: %s\n", bzero(str, 2));
+	ft_bzero(bzero, 2);
+	printf("FT: %s\n", bzero);
+	printf("O: %s\n", bzero(bzero, 2));
 }
