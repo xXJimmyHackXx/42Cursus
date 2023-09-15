@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libre.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 16:28:35 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:38:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBRE_H
 # define LIBRE_H
 
+# include "libre.h"
+# include <stdio.h>
 # include <ctype.h>
 # include <string.h>
 
@@ -26,5 +28,6 @@ void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dest, const void *src, size_t n);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 
 #endif

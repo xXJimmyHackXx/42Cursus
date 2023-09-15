@@ -6,13 +6,14 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/15 10:09:28 by marvin           ###   ########.fr       */
+/*   Updated: 2023/09/15 14:06:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libre.h"
 #include <stdio.h>
 #include <string.h>
+#include <bsd/string.h>
 
 int	main(void)
 {
@@ -27,6 +28,10 @@ int	main(void)
 	char	emm[100];
 	char	mm2[] = "hola, que tal";
 	char	emm2[100];
+	char	strl[] = "hola, que";
+	char	estl[100];
+	char	strl2[] = "hola, que";
+	char	estrl2[100];
 
 	printf("_______________\n");
 	printf("ISALNUM\n");
@@ -76,5 +81,12 @@ int	main(void)
 	printf("FT: %s\n", emm2);
 	memmove(emm, mm, sizeof(mm));
 	printf("O: %s\n", emm);
+	printf("_______________\n");
+	printf("STRLCPY\n");
+	ft_strlcpy(estrl2, strl2, sizeof(strl2));
+	printf("FT: %s || LEN: %ld\n", estrl2, sizeof(strl2));
+	strlcpy(estl, strl, sizeof(strl));
+	printf("O: %s || LEN: %ld\n", estl, sizeof(strl));
+	printf("_______________\n");
 	
 }
