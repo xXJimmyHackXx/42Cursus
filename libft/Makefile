@@ -15,11 +15,10 @@ SOURCES = main.c \
 		ft_strlcpy.c 
 PROGRAM = libft.a
 OBJS = $(SOURCES:.c=.o)
-LIBS = -lbsd
 all: $(PROGRAM)
 
 $(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
