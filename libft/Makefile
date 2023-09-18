@@ -1,34 +1,29 @@
-.PHONY: fclean run
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-SOURCES = main.c \
-		ft_bzero.c\
-		ft_isalnum.c\
-		ft_isalpha.c\
-		ft_isascii.c\
-		ft_isdigit.c\
-		ft_isprint.c\
-		ft_memset.c\
-		ft_strlen.c\
-		ft_memcpy.c\
-		ft_memmove.c\
-		ft_strlcpy.c\
-		ft_toupper.c\
-		ft_tolower.c\
-		ft_strchr.c\
-
-PROGRAM = libft.a
+NAME = libft.a
+SOURCES = ft_isalnum.c \
+		ft_isalpha.c \
+		ft_isascii.c \
+		ft_isdigit.c \
+		ft_isprint.c \
+		ft_memset.c \
+		ft_strlen.c \
+		ft_bzero.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_strchr.c \
+		ft_strrchr.c \
+		ft_strlcpy.c \
+		main.c
 OBJS = $(SOURCES:.c=.o)
-all: $(PROGRAM)
-
-$(PROGRAM): $(OBJS)
-	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-r: all
-	@./$(PROGRAM) | cat -e
-
-c:
-	rm -rf $(PROGRAM) *.o
+FLAGS = -Wall -Wextra -Werror
+$(NAME):
+	gcc $(FLAGS) -c $(SOURCES) -I ./
+	ar rc $(NAME) $(OBJS)
+all: $(NAME)
+run: $(NAME)
+clean:
+	rm -f $(OBJS)
+fclean: clean
+	rm -f $(NAME)
+re: fclean all

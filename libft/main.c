@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/18 04:07:33 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:18:15 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ int	main(void)
 	char	emm[100];
 	char	mm2[] = "hola, que tal";
 	char	emm2[100];
-	char	strl[] = "hola, que";
-	char	estl[100];
-	char	strl2[] = "hola, que";
+	char	strl[] = "6789";
+	char	estl[100] = "12345";
+	char	strl2[] = "6789";
 	char	estrl2[100];
 	char 	tup = 'a';
 	char 	tup2 = 'a';
 	char 	tlw = 'A';
 	char 	tlw2 = 'A';
 	char	strc[] = "hola, que tal";
+	char	srtrcc[] = "hola, que tal";
 
 	printf("----------------\n");
 	printf("ISALNUM\n");
@@ -88,10 +89,10 @@ int	main(void)
 	printf("O: %s\n", emm);
 	printf("----------------\n");
 	printf("STRLCPY\n");
-	ft_strlcpy(estrl2, strl2, sizeof(strl2));
-	printf("FT: %s || LEN: %ld\n", estrl2, sizeof(strl2));
-	strlcpy(estl, strl, sizeof(estl));
-	printf("O: %s || LEN: %ld\n", estl, sizeof(strl));
+	ft_strlcpy(estrl2, strl2, sizeof(2));
+	printf("FT: %s || LEN: %ld\n", estrl2, sizeof(estrl2));
+	strlcpy(estl, strl, sizeof(2));
+	printf("O: %s || LEN: %ld\n", estl, sizeof(estl));
 	printf("----------------\n");
 	printf("TOUPPER\n");
 	printf("FT: %c\n", ft_toupper(tup));
@@ -104,6 +105,10 @@ int	main(void)
 	printf("STRCHR\n");
 	printf("FT: %s\n", ft_strchr(strc, 'q'));
 	printf("O: %s\n", strchr(strc, 'q'));
+	printf("----------------\n");
+	printf("STRRCHR\n");
+	printf("FT: %s\n", ft_strrchr(srtrcc, 'a'));
+	printf("O: %s\n", strrchr(srtrcc, 'a'));
 	printf("----------------\n");
 	return (0);
 }
