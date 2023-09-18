@@ -6,11 +6,11 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 12:52:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/13 11:30:35 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/18 00:32:52 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libre.h"
+#include "libft.h"
 
 int	ft_isalpha(int str)
 {
