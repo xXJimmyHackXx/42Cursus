@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/18 02:14:08 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/18 04:07:33 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(void)
 	char 	tup2 = 'a';
 	char 	tlw = 'A';
 	char 	tlw2 = 'A';
+	char	strc[] = "hola, que tal";
 
 	printf("----------------\n");
 	printf("ISALNUM\n");
@@ -99,6 +100,10 @@ int	main(void)
 	printf("TOLOWER\n");
 	printf("FT: %c\n", ft_tolower(tlw));
 	printf("O: %c\n", tolower(tlw2));
+	printf("----------------\n");
+	printf("STRCHR\n");
+	printf("FT: %s\n", ft_strchr(strc, 'q'));
+	printf("O: %s\n", strchr(strc, 'q'));
 	printf("----------------\n");
 	return (0);
 }

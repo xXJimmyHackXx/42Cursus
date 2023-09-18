@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/18 02:02:08 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/18 04:00:42 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void			*ft_memmove(void *dest, const void *src, size_t n);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+char			*ft_strchr(char *str, int c);
+
 
 #endif

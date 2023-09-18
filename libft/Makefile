@@ -15,6 +15,7 @@ SOURCES = main.c \
 		ft_strlcpy.c\
 		ft_toupper.c\
 		ft_tolower.c\
+		ft_strchr.c\
 
 PROGRAM = libft.a
 OBJS = $(SOURCES:.c=.o)
