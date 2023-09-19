@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/19 18:57:43 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/19 20:16:00 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,10 @@ int	main(void)
 	printf("STRNCMP\n");
 	printf("FT: %d\n", ft_strncmp("holb", "hola", 4));
 	printf("O: %d\n", strncmp("holb", "hola", 4));
+	printf("----------------\n");
+	printf("MEMCHR\n");
+	printf("FT: %s\n", ft_memchr("holaoooo", 'a', 4));
+	printf("O: %s\n", memchr("holaoooo", 'a', 4));
 	printf("----------------\n");
 	return (0);
 }
