@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 16:18:52 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/18 17:18:15 by jagarci2         ###   ########.fr       */
+/*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
+/*   Updated: 2023/09/19 18:57:43 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int	main(void)
 	printf("O: %s\n", obzero);
 	printf("----------------\n");
 	printf("MEMMOVE\n");
-	ft_memmove(emm2, mm2, sizeof(mm2));
+	ft_memmove(emm2, mm2, 100);
 	printf("FT: %s\n", emm2);
-	memmove(emm, mm, sizeof(mm));
+	memmove(emm, mm, 100);
 	printf("O: %s\n", emm);
 	printf("----------------\n");
 	printf("STRLCPY\n");
@@ -109,6 +109,10 @@ int	main(void)
 	printf("STRRCHR\n");
 	printf("FT: %s\n", ft_strrchr(srtrcc, 'a'));
 	printf("O: %s\n", strrchr(srtrcc, 'a'));
+	printf("----------------\n");
+	printf("STRNCMP\n");
+	printf("FT: %d\n", ft_strncmp("holb", "hola", 4));
+	printf("O: %d\n", strncmp("holb", "hola", 4));
 	printf("----------------\n");
 	return (0);
 }

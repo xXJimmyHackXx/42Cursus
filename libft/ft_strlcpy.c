@@ -18,9 +18,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	len;
 
 	i = 0;
-	len = 0;
-	while (src[len] != '\0')
-		len++;
+	len = ft_strlen(src);
 	if (size != 0)
 	{
 		while (src[i] != '\0' && i < (size - 1))
