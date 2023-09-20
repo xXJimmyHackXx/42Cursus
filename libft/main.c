@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/20 15:58:19 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:35:35 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,13 @@ int	main(void)
 	printf("CALLOC\n");
 	printf("FT: %s\n", ft_calloc(5, 5));
 	printf("O: %s\n", calloc(5, 5));
+	printf("----------------\n");
+	printf("STRDUP\n");
+	printf("FT: %s\n", ft_strdup("hola"));
+	printf("O: %s\n", strdup("hola"));
+	printf("----------------\n");
+	printf("SUBSTR\n");
+	printf("FT: %s\n", ft_substr("hola", 0, 5));
 	printf("----------------\n");
 	return (0);
 }
