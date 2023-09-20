@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 20:06:25 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/20 13:09:40 by jagarci2         ###   ########.fr       */
+/*   Created: 2023/09/20 12:14:55 by jagarci2          #+#    #+#             */
+/*   Updated: 2023/09/20 13:13:09 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strnstr(const char *src, const char *dest, size_t len)
 {
-	size_t				i;
-	const unsigned char	*ss1;
-	const unsigned char	*ss2;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	ss1 = (const unsigned char *)s1;
-	ss2 = (const unsigned char *)s2;
-	while (i < n)
+	if (dest[i] == '\0')
+		return ((char *)src);
+	while (src[i] != '\0' && i < len)
 	{
-		if (ss1[i] != ss2[i])
-			return (ss1[i] - ss2[i]);
+		j = 0;
+		while (src[i + j] == dest[j] && i + j < len)
+		{
+			if (dest[j + 1] == '\0')
+				return ((char *)src + i);
+			j++;
+		}
 		i++;
 	}
 	return (0);

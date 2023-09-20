@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/19 20:16:00 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:58:19 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,22 @@ int	main(void)
 	printf("MEMCHR\n");
 	printf("FT: %s\n", ft_memchr("holaoooo", 'a', 4));
 	printf("O: %s\n", memchr("holaoooo", 'a', 4));
+	printf("----------------\n");
+	printf("MEMCMP\n");
+	printf("FT: %d\n", ft_memcmp("hola", "hola", 4));
+	printf("O: %d\n", memcmp("hola", "hola", 4));
+	printf("----------------\n");
+	printf("STRNSTR\n");
+	printf("FT: %s\n", ft_strnstr("hola", "la", 4));
+	printf("O: %s\n", strnstr("hola", "la", 4));
+	printf("----------------\n");
+	printf("ATOI\n");
+	printf("FT: %d\n", ft_atoi("  -+--+-+1234ab567"));
+	printf("O: %d\n", atoi("  -+--+-+1234ab567"));
+	printf("----------------\n");
+	printf("CALLOC\n");
+	printf("FT: %s\n", ft_calloc(5, 5));
+	printf("O: %s\n", calloc(5, 5));
 	printf("----------------\n");
 	return (0);
 }

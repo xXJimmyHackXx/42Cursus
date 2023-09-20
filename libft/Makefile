@@ -15,7 +15,11 @@ SOURCES = ft_isalnum.c \
 		ft_strrchr.c \
 		ft_strlcpy.c \
 		ft_strncmp.c \
-		ft_memchr.c
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_strnstr.c \
+		ft_atoi.c \
+		ft_calloc.c
 
 OBJS = $(SOURCES:.c=.o)
 FLAGS = -Wall -Wextra -Werror

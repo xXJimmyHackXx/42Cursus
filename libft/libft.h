@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/19 19:57:51 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:39:13 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <ctype.h>
 # include <string.h>
+# include <stdlib.h>
 
 int				ft_isalpha(int str);
 int				ft_isascii(int str);
@@ -35,5 +36,9 @@ char			*ft_strchr(const char *str, int c);
 char			*ft_strrchr(const char *str, int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
+int				ft_memcmp(const void *str1, const void *str2, size_t n);
+char			*ft_strnstr(const char *src, const char *dest, size_t len);
+int				ft_atoi(const char *str);
+void			*ft_calloc(size_t count, size_t size);
 
 #endif
