@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 03:23:11 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/18 16:53:19 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/21 11:04:11 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,10 @@ char	*ft_strchr(const char *str, int c)
 	while (str2[i] != '\0')
 	{
 		if (str2[i] == (unsigned char)c)
-		{
 			return ((char *)&str2[i]);
-		}
 		i++;
 	}
 	if (str2[i] == (unsigned char)c)
-	{
 		return ((char *)&str2[i]);
-	}
 	return (NULL);
 }

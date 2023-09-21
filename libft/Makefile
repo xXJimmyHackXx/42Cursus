@@ -22,6 +22,9 @@ SOURCES = ft_isalnum.c \
 		ft_calloc.c \
 		ft_strdup.c \
 		ft_substr.c \
+		ft_strlcat.c \
+		ft_strjoin.c \
+		
 
 OBJS = $(SOURCES:.c=.o)
 FLAGS = -Wall -Wextra -Werror

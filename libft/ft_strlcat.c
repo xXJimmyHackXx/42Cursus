@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/20 17:23:21 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/21 16:58:26 by jagarci2         ###   ########.fr       */
+/*   Created: 2023/09/21 11:01:43 by jagarci2          #+#    #+#             */
+/*   Updated: 2023/09/21 15:05:20 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char	*dup;
-	int		i;
-	int		len;
+	unsigned int	dst_len;
+	unsigned int	src_len;
+	unsigned int	total_len;
+	char			*ssrc;
+	size_t			i;
 
-	len = ft_strlen(s1);
+	ssrc = (char *)src;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	total_len = dst_len + src_len;
 	i = 0;
-	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!s1 || !dup)
-		return (0);
-	while (s1[i] != '\0')
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
+	while (ssrc[i] && dst_len + 1 < dstsize)
 	{
-		dup[i] = s1[i];
+		dst[dst_len] = ssrc[i];
+		dst_len++;
 		i++;
 	}
-	dup[i] = 0;
-	return (dup);
+	dst[dst_len] = '\0';
+	return (total_len);
 }
