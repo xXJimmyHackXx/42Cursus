@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/21 15:03:34 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/23 17:07:25 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			*ft_memmove(void *dest, const void *src, size_t n);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-char			*ft_strchr(const char *str, int c);
+char			*dft_strchr(const char *str, int c);
 char			*ft_strrchr(const char *str, int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
@@ -44,5 +44,8 @@ char			*ft_strdup(const char *s1);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strjoin(const char *str1, const char *str2);
+char			*ft_strtrim(char const *s1, char const *set);
+char			*ft_strchr(const char *str, int c);
+char			**ft_split(char const *s, char c);
 
 #endif

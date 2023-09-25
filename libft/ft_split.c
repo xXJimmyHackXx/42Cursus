@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 20:56:37 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/23 12:40:11 by jagarci2         ###   ########.fr       */
+/*   Created: 2023/09/23 16:43:22 by jagarci2          #+#    #+#             */
+/*   Updated: 2023/09/23 17:48:34 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	**ft_split(char const *s, char c)
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	char	**result;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
 	i = 0;
-	if (n > 0)
+	j = 0;
+	result = (char **)malloc(sizeof(char *) * (ft_strlen(s) + 1));
+	if (result == 0)
+		return (0);
+	while (s[i] != '\0')
 	{
-		while (str1[i] != '\0' && str2[i] != '\0' && i < (n - 1))
-		{	
-			if (str1[i] != str2[i])
-				return (str1[i] - str2[i]);
+		while (s[i] == c)
 			i++;
+		k = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		if (i > k)
+		{
+			result[j] = ft_substr(s, k, i - k);
+			j++;
 		}
 	}
-	else
-		return (0);
-	return (str1[i] - str2[i]);
+	result[j] = 0;
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/20 18:35:35 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/23 15:38:39 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,12 @@ int	main(void)
 	printf("----------------\n");
 	printf("SUBSTR\n");
 	printf("FT: %s\n", ft_substr("hola", 0, 5));
+	printf("----------------\n");
+	printf("STRJOIN\n");
+	printf("FT: %s\n", ft_strjoin("hola", "que tal"));
+	printf("----------------\n");
+	printf("STRTRIM\n");
+	printf("FT: %s\n", ft_strtrim("	hola, que tal", "d"));
 	printf("----------------\n");
 	return (0);
 }

@@ -6,14 +6,11 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:15:59 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/20 18:31:46 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/22 19:45:04 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

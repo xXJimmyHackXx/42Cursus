@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:14:55 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/20 13:13:09 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/23 13:51:22 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *src, const char *dest, size_t len)
 		while (src[i + j] == dest[j] && i + j < len)
 		{
 			if (dest[j + 1] == '\0')
-				return ((char *)src + i);
+				return ((char *)&src[i]);
 			j++;
 		}
 		i++;
