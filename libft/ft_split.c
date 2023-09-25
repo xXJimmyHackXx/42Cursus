@@ -6,37 +6,85 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:43:22 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/23 17:48:34 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:09:11 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static size_t	ft_countword(char const *s, char c)
+{
+	size_t	count;
+
+	if (!*s)
+		return (0);
+	count = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s)
+			count++;
+		while (*s != c && *s)
+			s++;
+	}
+	return (count);
+}
+
+static void	clean(char **result, int i)
+{
+	while (i >= 0)
+	{
+		free(result[i]);
+		i--;
+	}
+	free(result);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	size_t	word_len;
+	int		i;
 
-	i = 0;
-	j = 0;
-	result = (char **)malloc(sizeof(char *) * (ft_strlen(s) + 1));
-	if (result == 0)
+	result = (char **)malloc((ft_countword(s, c) + 1) * sizeof(char *));
+	if (!s || !result)
 		return (0);
-	while (s[i] != '\0')
+	i = 0;
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		k = i;
-		while (s[i] != c && s[i] != '\0')
-			i++;
-		if (i > k)
+		while (*s == c && *s)
+			s++;
+		if (*s)
 		{
-			result[j] = ft_substr(s, k, i - k);
-			j++;
+			if (!ft_strchr(s, c))
+				word_len = ft_strlen(s);
+			else
+				word_len = ft_strchr(s, c) - s;
+			result[i++] = ft_substr(s, 0, word_len);
+			if (!result[i - 1])
+			{
+				clean(result, i - 1);
+				return (0);
+			}
+			s += word_len;
 		}
 	}
-	result[j] = 0;
+	result[i] = 0;
 	return (result);
 }
+
+/*int    main(void)
+{
+    char    **result;
+    int        i;
+
+	result = ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
+    i = 0;
+    while (result[i] != 0)
+    {
+        printf("%s\n", result[i]);
+        i++;
+    }
+    return (0);
+}*/
