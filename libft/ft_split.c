@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:43:22 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/25 18:09:11 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:34:05 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,11 @@ char	**ft_split(char const *s, char c)
 				word_len = ft_strchr(s, c) - s;
 			result[i++] = ft_substr(s, 0, word_len);
 			if (!result[i - 1])
-			{
-				clean(result, i - 1);
-				return (0);
-			}
+				return (clean(result, i - 1), NULL);
 			s += word_len;
 		}
 	}
-	result[i] = 0;
-	return (result);
+	return (result[i] = 0, result);
 }
 
 /*int    main(void)

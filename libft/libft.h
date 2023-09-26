@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/23 17:07:25 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/26 19:49:48 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ char			*ft_strjoin(const char *str1, const char *str2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strchr(const char *str, int c);
 char			**ft_split(char const *s, char c);
+char			*ft_itoa(int n);
 
 #endif
