@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:32:29 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/26 19:48:20 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/26 20:02:36 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,3 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 	return (str);
 }
-
-// int main()
-// {
-// 	printf("%s\n", ft_itoa(0));
-// 	printf("%s\n", ft_itoa(1));
-// 	printf("%s\n", ft_itoa(-1));
-// 	printf("%s\n", ft_itoa(10));
-// 	printf("%s\n", ft_itoa(-10));
-// 	printf("%s\n", ft_itoa(100));
-// 	printf("%s\n", ft_itoa(-100));
-// 	printf("%s\n", ft_itoa(1000));
-// 	printf("%s\n", ft_itoa(-1000));
-// 	printf("%s\n", ft_itoa(10000));
-// 	printf("%s\n", ft_itoa(-10000));
-// 	printf("%s\n", ft_itoa(100000));
-// 	printf("%s\n", ft_itoa(-100000));
-// 	printf("%s\n", ft_itoa(1000000));
-// 	printf("%s\n", ft_itoa(-1000000));
-// 	printf("%s\n", ft_itoa(10000000));
-// 	printf("%s\n", ft_itoa(-10000000));
-// 	printf("%s\n", ft_itoa(100000000));
-// 	printf("%s\n", ft_itoa(-100000000));
-// 	printf("%s\n", ft_itoa(1000000000));
-// 	printf("%s\n", ft_itoa(-1000000000));
-// 	printf("%s\n", ft_itoa(2147483647));
-// 	printf("%s\n", ft_itoa(-2147483648));
-// 	return (0);
-// }
