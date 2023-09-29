@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/23 15:38:39 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/28 21:34:18 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 #include <stdio.h>
 #include <string.h>
 
+char	ft_1toupper(unsigned int i, char c)
+{
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+		i = i + 0;
+	return (c);
+}
 int	main(void)
 {
 	char	fbzero[] = "hola, que tal";
@@ -38,6 +45,8 @@ int	main(void)
 	char 	tlw2 = 'A';
 	char	strc[] = "hola, que tal";
 	char	srtrcc[] = "hola, que tal";
+
+
 
 	printf("----------------\n");
 	printf("ISALNUM\n");
@@ -146,6 +155,15 @@ int	main(void)
 	printf("----------------\n");
 	printf("STRTRIM\n");
 	printf("FT: %s\n", ft_strtrim("	hola, que tal", "d"));
+	printf("----------------\n");
+	printf("SPLIT\n");
+	printf("FT: %s\n", ft_split("hola, que tal", ',')[0]);
+	printf("----------------\n");
+	printf("ITOA\n");
+	printf("FT: %s\n", ft_itoa(123456789));
+	printf("----------------\n");
+	printf("STRMAPI\n");
+	printf("FT: %s\n", ft_strmapi("hola, que tal", ft_1toupper));
 	printf("----------------\n");
 	return (0);
 }
