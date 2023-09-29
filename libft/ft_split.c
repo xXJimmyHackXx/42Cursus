@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 16:43:22 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/26 14:34:05 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/09/29 19:12:55 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char	**ft_split(char const *s, char c)
 	}
 	return (result[i] = 0, result);
 }
-
 /*int    main(void)
 {
     char    **result;
