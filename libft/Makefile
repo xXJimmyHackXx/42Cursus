@@ -33,11 +33,18 @@ SOURCES = ft_isalnum.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
+		ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
 
 OBJS = $(SOURCES:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 $(NAME):
 	gcc $(FLAGS) -c $(SOURCES) -I ./
+	ar rc $(NAME) $(OBJS)
+$(BONUS):
+	gcc $(FLAGS) -c $(BONUS) -I ./
 	ar rc $(NAME) $(OBJS)
 all: $(NAME)
 run: $(NAME)

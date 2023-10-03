@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 11:01:43 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/10/02 19:31:31 by jagarci2         ###   ########.fr       */
+/*   Created: 2023/10/03 16:08:15 by jagarci2          #+#    #+#             */
+/*   Updated: 2023/10/03 16:53:55 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned int	dst_len;
-	unsigned int	src_len;
-	unsigned int	total_len;
-	char			*ssrc;
-	size_t			i;
+	int		i;
+	t_list	*tmp;
 
-	ssrc = (char *)src;
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	total_len = dst_len + src_len;
 	i = 0;
-	if (dstsize <= dst_len)
-		return (dstsize + src_len);
-	while (ssrc[i] && dst_len + 1 < dstsize)
+	tmp = lst;
+	while (tmp->next != NULL)
 	{
-		dst[dst_len] = ssrc[i];
-		dst_len++;
 		i++;
+		tmp = tmp->next;
 	}
-	dst[dst_len] = '\0';
-	return (total_len);
+	if (tmp->next == NULL)
+		i++;
+	return (i);
 }
