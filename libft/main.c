@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/10/03 18:30:02 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/03 22:42:58 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <stdio.h>
 #include <string.h>
 
-// char	ft_1toupper(unsigned int i, char c)
+// char	ft_1toupper(char c)
 // {
 // 	if (c >= 'a' && c <= 'z')
 // 		c -= 32;
-// 		i = i + 0;
 // 	return (c);
 // }
+
 int	main(void)
 {
 	char	fbzero[] = "hola, que tal";
@@ -45,6 +45,7 @@ int	main(void)
 	char 	tlw2 = 'A';
 	char	strc[] = "hola, que tal";
 	char	srtrcc[] = "hola, que tal";
+	t_list	*list;
 
 
 
@@ -167,10 +168,10 @@ int	main(void)
 	printf("O: %lu\n", strlcat("hola", "que tal", 2));
 	printf("----------------\n");
 	printf("STRMAPI\n");
-	printf("FT: %s\n", ft_strmapi("hola, que tal", ft_1toupper));
+	//printf("FT: %s\n", ft_strmapi("hola, que tal", ft_1toupper));
 	printf("----------------\n");
 	printf("STRITERI\n");
-	// ft_striteri("hola, que tal", ft_1toupper);
+	//ft_striteri("hola, que tal", ft_1toupper);
 	printf("----------------\n");
 	printf("PUTCHAR_FD\n");
 	ft_putchar_fd('a', 1);
@@ -181,7 +182,6 @@ int	main(void)
 	printf("\n");
 	printf("----------------\n");
 	printf("LSTNEW\n");
-	t_list *list;
 	list = ft_lstnew("Hola");
 	printf("%s\n", list->content);
 	printf("----------------\n");

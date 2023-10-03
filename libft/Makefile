@@ -33,23 +33,28 @@ SOURCES = ft_isalnum.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
-		ft_lstnew.c \
+
+BONUS = ft_lstnew.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
 		ft_lstlast.c \
+		ft_lstadd_back.c \
 
 OBJS = $(SOURCES:.c=.o)
+BOBJS = $(BONUS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 $(NAME):
 	gcc $(FLAGS) -c $(SOURCES) -I ./
 	ar rc $(NAME) $(OBJS)
-$(BONUS):
+
+bonus: $(OBJS) $(BOBJS)
 	gcc $(FLAGS) -c $(BONUS) -I ./
-	ar rc $(NAME) $(OBJS)
+	ar rc $(NAME) $(BOBJS)
 all: $(NAME)
-run: $(NAME)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BOBJS)
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
+.PHONY: all clean fclean re
