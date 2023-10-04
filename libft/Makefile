@@ -42,10 +42,11 @@ BONUS = ft_lstnew.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
+		ft_lstmap.c \
 
 OBJS = $(SOURCES:.c=.o)
 BOBJS = $(BONUS:.c=.o)
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g3 -fsanitize=address
 $(NAME):
 	@gcc $(FLAGS) -c $(SOURCES) -I ./
 	@ar rc $(NAME) $(OBJS)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/10/04 14:37:36 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:07:10 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,22 @@ int	main(void)
 	char	strmap[] = "hola, que tal";
 	t_list	*list;
 	t_list	*lista;
+	t_list	*listb;
+
+	t_list		*elem;
+	t_list		*elem2;
+	t_list		*elem3;
+	t_list		*elem4;
+	t_list		*listj;
+	char		*str = strdup("lorem");
+	char		*str2 = strdup("ipsum");
+	char		*str3 = strdup("dolor");
+	char		*str4 = strdup("sit");
+
+	elem = ft_lstnewone(str);
+	elem2 = ft_lstnewone(str2);
+	elem3 = ft_lstnewone(str3);
+	elem4 = ft_lstnewone(str4);
 
 
 
@@ -226,5 +242,12 @@ int	main(void)
 	printf("\n");
 	printf("----------------\n");
 	printf("LSTMAP\n");
+	listb = ft_lstnew(ft_strdup("Hello, "));
+	ft_lstadd_back(&listb, ft_lstnew(ft_strdup("world!")));
+	ft_lstadd_back(&listb, ft_lstnew(ft_strdup(" How ")));
+	ft_lstadd_back(&listb, ft_lstnew(ft_strdup("are ")));
+	ft_lstadd_back(&listb, ft_lstnew(ft_strdup("you?")));
+	lista = ft_lstmap(listb, ft_strdup, free);
+	ft_lstiter(lista, print_content);
 	return (0);
 }
