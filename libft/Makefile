@@ -47,12 +47,12 @@ OBJS = $(SOURCES:.c=.o)
 BOBJS = $(BONUS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 $(NAME):
-	gcc $(FLAGS) -c $(SOURCES) -I ./
-	ar rc $(NAME) $(OBJS)
+	@gcc $(FLAGS) -c $(SOURCES) -I ./
+	@ar rc $(NAME) $(OBJS)
 
-bonus: $(OBJS) $(BOBJS)
-	gcc $(FLAGS) -c $(BONUS) -I ./
-	ar rc $(NAME) $(BOBJS)
+bonus: $(BOBJS)
+	@gcc $(FLAGS) -c $(BONUS) -I ./
+	@ar rc $(NAME) $(BOBJS)
 all: $(NAME)
 
 clean:

@@ -6,20 +6,32 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:14:13 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/10/03 22:42:58 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:37:36 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
-// char	ft_1toupper(char c)
-// {
-// 	if (c >= 'a' && c <= 'z')
-// 		c -= 32;
-// 	return (c);
-// }
+void	print_content(void *content)
+{
+	if (content)
+		ft_putstr_fd(content, 1);
+}
+
+char	ft_2toupper(unsigned int i, char c)
+{
+	(void)i;
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
+}
+
+void	ft_1toupper(unsigned int i, char *c)
+{
+	(void)i;
+	if (*c >= 'a' && *c <= 'z')
+		*c -= 32;
+}
 
 int	main(void)
 {
@@ -45,7 +57,10 @@ int	main(void)
 	char 	tlw2 = 'A';
 	char	strc[] = "hola, que tal";
 	char	srtrcc[] = "hola, que tal";
+	char	stri[] = "hola, que tal";
+	char	strmap[] = "hola, que tal";
 	t_list	*list;
+	t_list	*lista;
 
 
 
@@ -168,10 +183,11 @@ int	main(void)
 	printf("O: %lu\n", strlcat("hola", "que tal", 2));
 	printf("----------------\n");
 	printf("STRMAPI\n");
-	//printf("FT: %s\n", ft_strmapi("hola, que tal", ft_1toupper));
+	printf("FT: %s\n", ft_strmapi(strmap, ft_2toupper));
 	printf("----------------\n");
 	printf("STRITERI\n");
-	//ft_striteri("hola, que tal", ft_1toupper);
+	ft_striteri(stri, ft_1toupper);
+	printf("FT: %s\n", stri);
 	printf("----------------\n");
 	printf("PUTCHAR_FD\n");
 	ft_putchar_fd('a', 1);
@@ -185,5 +201,30 @@ int	main(void)
 	list = ft_lstnew("Hola");
 	printf("%s\n", list->content);
 	printf("----------------\n");
+	printf("LSTADD_FRONT\n");
+	ft_lstadd_front(&list, ft_lstnew("Que tal"));
+	printf("%s\n", list->content);
+	printf("----------------\n");
+	printf("LSTSIZE\n");
+	printf("%d\n", ft_lstsize(list));
+	printf("----------------\n");
+	printf("LSTLAST\n");
+	printf("%s\n", ft_lstlast(list)->content);
+	printf("----------------\n");
+	printf("LSTADD_BACK\n");
+	ft_lstadd_back(&list, ft_lstnew("Adios"));
+	printf("%s\n", ft_lstlast(list)->content);
+	printf("----------------\n");
+	printf("LSTITER\n");
+	lista = ft_lstnew(ft_strdup("Hello, "));
+	ft_lstadd_back(&lista, ft_lstnew(ft_strdup("world!")));
+	ft_lstadd_back(&lista, ft_lstnew(ft_strdup(" How ")));
+	ft_lstadd_back(&lista, ft_lstnew(ft_strdup("are ")));
+	ft_lstadd_back(&lista, ft_lstnew(ft_strdup("you?")));
+	ft_lstiter(lista, print_content);
+	ft_lstclear(&lista, free);
+	printf("\n");
+	printf("----------------\n");
+	printf("LSTMAP\n");
 	return (0);
 }
