@@ -3,39 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:46:30 by kali              #+#    #+#             */
-/*   Updated: 2023/10/04 15:49:41 by kali             ###   ########.fr       */
+/*   Updated: 2023/10/04 19:12:19 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	ft_lstclear_miau(t_list **new, t_list **val, void (*del)(void *))
+{
+	*val = (*new)->next;
+	del((*new)->content);
+	free(*new);
+	*new = *val;
+}
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new;
 	t_list	*val;
+	void	*content;
 
 	if (!lst || !f || !del)
 		return (0);
 	new = NULL;
-	new = ft_lstnew(f(lst->content));
-	if (!new)
-		return (0);
-	val = new;
-	lst = lst->next;
 	while (lst)
 	{
-		new = ft_lstnew(f(lst->content));
-		if (!new->next)
+		content = f(lst->content);
+		val = ft_lstnew(content);
+		if (!val)
 		{
-			ft_lstclear(&val, del);
+			del(content);
+			while (new)
+				ft_lstclear_miau(&new, &val, del);
+			lst = NULL;
 			return (0);
 		}
-		new = new->next;
+		ft_lstadd_back(&new, val);
 		lst = lst->next;
 	}
-	new->next = NULL;
-	return (val);
+	return (new);
 }

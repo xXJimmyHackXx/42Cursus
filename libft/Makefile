@@ -46,7 +46,7 @@ BONUS = ft_lstnew.c \
 
 OBJS = $(SOURCES:.c=.o)
 BOBJS = $(BONUS:.c=.o)
-FLAGS = -g3 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 $(NAME):
 	@gcc $(FLAGS) -c $(SOURCES) -I ./
 	@ar rc $(NAME) $(OBJS)
