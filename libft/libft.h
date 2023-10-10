@@ -6,15 +6,13 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 16:10:17 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/10/04 19:18:52 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:10:37 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "libft.h"
-# include <stdio.h>
 # include <ctype.h>
 # include <string.h>
 # include <stdlib.h>

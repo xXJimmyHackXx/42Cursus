@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 13:36:14 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/09/21 15:06:15 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/10 14:33:38 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*ft_strjoin(const char *str1, const char *str2)
 	len1 = ft_strlen(str1);
 	len2 = ft_strlen(str2);
 	result = (char *)malloc(len1 + len2 + 1);
+	if (!result)
+		return (NULL);
 	if (result)
 	{
 		ft_strcpy(result, (char *)str1);
