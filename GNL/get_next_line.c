@@ -6,7 +6,7 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/10/25 20:07:22 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/10/26 12:10:39 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,24 @@
 char	*get_next_line(int fd)
 {
 	char	*buf;
-	int		size;
+	char	*line;
 	char	c;
+	int		size;
 	int		bytes_read;
 
-	bytes_read = read(fd, &c, 1);
 	size = 0;
-	buf = malloc(1);
+	buf = malloc(999);
+	line = NULL;
+	bytes_read = read(fd, &c, 1);
 	while (bytes_read > 0)
 	{
 		if (c == '\n')
-			break;
-		size++;
-		buf
+			break ;
+		if (size == 998)
+		{
+			
+		}
 	}
-	return (buf);
 }
 
 int	main(void)
