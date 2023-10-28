@@ -6,43 +6,11 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 13:36:14 by jagarci2          #+#    #+#             */
-/*   Updated: 2023/10/10 18:22:14 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:26:22 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strcat(char *dest, const char *src)
-{
-	char	*original_dest;
-
-	original_dest = dest;
-	while (*dest)
-		dest++;
-	while (*src)
-	{
-		*dest = *src;
-		dest++;
-		src++;
-	}
-	*dest = '\0';
-	return (original_dest);
-}
-
-char	*ft_strcpy(char *dest, const char *src)
-{
-	char	*original_dest;
-
-	original_dest = dest;
-	while (*src != '\0')
-	{
-	*dest = *src;
-	dest++;
-	src++;
-	}
-	*dest = '\0';
-	return (original_dest);
-}
 
 char	*ft_strjoin(const char *str1, const char *str2)
 {
@@ -59,8 +27,8 @@ char	*ft_strjoin(const char *str1, const char *str2)
 		return (NULL);
 	if (result)
 	{
-		ft_strcpy(result, (char *)str1);
-		ft_strcat(result, (char *)str2);
+		ft_strlcpy(result, (char *)str1, len1 + len2 + 1);
+		ft_strlcat(result, (char *)str2, len1 + len2 + 1);
 	}
 	return (result);
 }
