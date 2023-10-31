@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:12:05 by jimmy             #+#    #+#             */
-/*   Updated: 2023/10/28 01:22:06 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:50:39 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strchr(const char *str, int c)
 {
-	char	*str;
-	char	chr;
-	size_t	i;
+	int				i;
+	unsigned char	*str2;
 
-	str = (char *)s;
-	chr = (char)c;
 	i = 0;
-	while (i < n)
+	str2 = (unsigned char *)str;
+	while (str2[i] != '\0')
 	{
-		if (str[i] == chr)
-			return ((void *)&str[i]);
+		if (str2[i] == (unsigned char)c)
+			return ((char *)&str2[i]);
 		i++;
 	}
-	return (0);
+	if (str2[i] == (unsigned char)c)
+		return ((char *)&str2[i]);
+	return (NULL);
 }
 
 char	*ft_strdup(const char *s1)
@@ -85,47 +85,27 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (result);
 }
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*get_line(char **remainder, char *line)
 {
-	char	*s;
-	char	*d;
-	size_t	i;
+    char	*tmp;
+    char	*newline;
 
-	s = (char *)src;
-	d = (char *)dest;
-	i = 0;
-	if (src == 0 && dest == 0)
-		return (0);
-	if (d > s)
-		while (n-- > 0)
-			d[n] = s[n];
-	else
-	{
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	return (dest);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	unsigned const char	*s;
-	unsigned char		*d;
-	size_t				i;
-
-	s = src;
-	d = dst;
-	i = 0;
-	if (src == NULL && dst == NULL)
-		return (NULL);
-	while (n > 0)
-	{
-		d[i] = s[i];
-		i++;
-		n--;
-	}
-	return (dst);
+    if (!remainder)
+        return (NULL);
+    newline = ft_strchr(line, '\n');
+    if (newline)
+    {
+        *newline = '\0';
+        tmp = ft_strdup(newline + 1);
+        if (*remainder)
+            free(*remainder);
+        *remainder = tmp;
+    }
+    else
+    {
+        if (*remainder)
+            free(*remainder);
+        *remainder = NULL;
+    }
+    return (line);
 }

@@ -3,35 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/10/28 11:26:40 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:47:42 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#include <unistd.h>
-#include <stdlib.h>
+#define BUFFER_SIZE 32
 
 char	*get_next_line(int fd)
 {
-	
-}
+	static char	*var;
+	char		*buf;
+	char		*line;
+	int			bt_read;
 
-#include <time.h>
-
-int	main(void)
-{
-	int		fd;
-	char	*s;
-	
-	fd = open("fd1.txt", O_RDONLY);
-	while (s = get_next_line(fd))
+	var = "";
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buf = malloc ((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buf)
+		return (NULL);
+	line = ft_strdup("");
+	if (!line)
 	{
-		printf("%s", s);
-		free(s);
+		free(buf);
+		return (NULL);
 	}
-	return (0);
+	bt_read = 1;
+	while (!ft_strchr(var, '\n') && bt_read > 0)
+	{
+		bt_read = read(fd, buf, BUFFER_SIZE);
+		if (bt_read == -1)
+		{
+			free(buf);
+			free(line);
+			return (NULL);
+		}
+		buf[bt_read] = '\0';
+		line = ft_strjoin(line, buf);
+	}
+	free(buf);
+	if (bt_read == 0)
+	{
+		char *tmp = var;
+		var = NULL;
+		free(tmp);
+		return (NULL);
+	}
+
+	return (get_line(&var, line));
 }
