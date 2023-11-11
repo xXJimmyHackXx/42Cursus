@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   lee una linea bien.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/11 18:23:05 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/11 18:55:46 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*get_next_line(int fd)
 			buffer = temp;
 			buffer_size *= 2;
 		}
-		bytesread = read(fd, buffer + totalbytesread, 1);
+		bytesread = read(fd, buffer + totalbytesread, buffer_size);
 	}
 	if (bytesread == -1 || (bytesread == 0 && totalbytesread == 0))
 	{
