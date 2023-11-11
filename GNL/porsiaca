@@ -1,0 +1,28 @@
+char	*get_next_line(int fd)
+{
+	size_t	totalbytesread;
+	char	*buffer;
+	int		bytesread;
+
+	totalbytesread = 0;
+	buffer = (char *)malloc(BUFFER_SIZE * sizeof(char));
+	if (buffer == NULL)
+		return (NULL);
+	bytesread = read(fd, buffer + totalbytesread, 1);
+	while (bytesread > 0)
+	{
+		if (buffer[totalbytesread] == '\n')
+		{
+			buffer[totalbytesread + 1] = '\0';
+			break ;
+		}
+		totalbytesread += bytesread;
+		bytesread = read(fd, buffer + totalbytesread, 1);
+	}
+	if (bytesread == -1 || (bytesread == 0 && totalbytesread == 0))
+	{
+		free(buffer);
+		return (NULL);
+	}
+	return (buffer);
+}

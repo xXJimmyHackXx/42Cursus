@@ -1,0 +1,58 @@
+char    *get_next_line(int fd)
+{
+    size_t totalbytesread = 0;
+    size_t current_buffer_size = BUFFER_SIZE;
+
+    char *buffer = (char *)malloc(current_buffer_size * sizeof(char));
+
+    if (buffer == NULL) {
+        return NULL;  // Error en la asignación de memoria
+    }
+
+    int bytesread = read(fd, buffer + totalbytesread, 1);
+
+    while (bytesread > 0) {
+        if (buffer[totalbytesread] == '\n') {
+            buffer[totalbytesread + 1] = '\0';
+            break;
+        }
+
+        totalbytesread += bytesread;
+
+        // Verifica si necesitas expandir el buffer
+        if (totalbytesread >= current_buffer_size - 1) {
+            char *temp = (char *)malloc(2 * current_buffer_size * sizeof(char));
+
+            if (temp == NULL) {
+                free(buffer);
+                return NULL;  // Error en la asignación de memoria
+            }
+
+            // Copia el contenido del buffer original al nuevo buffer usando un bucle while
+            size_t i = 0;
+            while (i < current_buffer_size) {
+                temp[i] = buffer[i];
+                i++;
+            }
+
+            free(buffer);
+            buffer = temp;
+            current_buffer_size *= 2;
+        }
+
+        bytesread = read(fd, buffer + totalbytesread, 1);
+    }
+
+    if (bytesread == -1) {
+        free(buffer);
+        return NULL;
+    }
+
+    if (totalbytesread == 0 && bytesread == 0)
+    {
+        free(buffer);
+        return NULL;
+    }
+
+    return buffer;
+}

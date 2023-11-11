@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:29:11 by jimmy             #+#    #+#             */
-/*   Updated: 2023/10/30 13:29:43 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/03 19:26:11 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	char	*s;
 
 	fd = open("fd1.txt", O_RDONLY);
-	while (s = get_next_line(fd))
+	while ((s = get_next_line(fd)))
 	{
 		printf("%s", s);
 		free(s);
