@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ni tan mal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/14 19:11:50 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/14 19:37:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "get_next_line.h"
-#include <string.h>
+
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -49,47 +49,77 @@ char	*ft_strdup(const char *s1)
 
 char *get_next_line(int fd)
 {
-    char buffer[BUFFER_SIZE];
-    char *line = NULL;
-    size_t total_bytes_read = 0;
-    ssize_t bytes_read;
+    size_t totalbytesread = 0;
+    size_t buffer_size = BUFFER_SIZE;
+    char *buffer = (char *)malloc(buffer_size * sizeof(char));
 
-    while ((bytes_read = read(fd, buffer, BUFFER_SIZE)) > 0)
+    if (buffer == NULL)
     {
-        buffer[bytes_read] = '\0'; // Agregar un terminador nulo al final del buffer
-        char *newline_pos = strchr(buffer, '\n');
+        return NULL;
+    }
 
-        if (newline_pos != NULL)
+    int bytesread = 1; // Inicializado a 1 para entrar en el bucle
+
+    while (bytesread > 0)
+    {
+        bytesread = read(fd, buffer + totalbytesread, 1);
+
+        if (bytesread > 0)
         {
-            *newline_pos = '\0'; // Reemplaza '\n' con '\0'
-            line = ft_strdup(buffer);
-            return line;
-        }
-        else
-        {
-            char *temp = (char *)malloc((total_bytes_read + bytes_read + 1) * sizeof(char));
-            if (temp == NULL)
-                return NULL;
+            if (buffer[totalbytesread] == '\n' || buffer[totalbytesread] == '\r')
+            {
+                buffer[totalbytesread] = '\0'; // Reemplaza '\n' o '\r' con '\0'
+                char *line = ft_strdup(buffer);
+                if (line == NULL)
+                {
+                    free(buffer);
+                    return NULL;
+                }
 
-            for (size_t i = 0; i < total_bytes_read; ++i)
-                temp[i] = line[i];
+                totalbytesread++;
+                return line;
+            }
 
-            for (ssize_t i = 0; i < bytes_read; ++i)
-                temp[total_bytes_read + i] = buffer[i];
+            totalbytesread++;
 
-            temp[total_bytes_read + bytes_read] = '\0'; // Agregar un terminador nulo al final
+            if (totalbytesread >= buffer_size - 1)
+            {
+                char *temp = (char *)malloc((buffer_size * 2 + 1) * sizeof(char));
+                if (temp == NULL)
+                {
+                    free(buffer);
+                    return NULL;
+                }
 
-            free(line);
-            line = temp;
-            total_bytes_read += bytes_read;
+                size_t i = 0;
+                while (i < buffer_size)
+                {
+                    temp[i] = buffer[i];
+                    i++;
+                }
+
+                free(buffer);
+                buffer = temp;
+                buffer_size *= 2;
+            }
         }
     }
 
-    if (bytes_read == 0 && total_bytes_read == 0)
+    if (totalbytesread == 0)
+    {
+        free(buffer);
         return NULL;
+    }
+
+    char *line = ft_strdup(buffer);
+    free(buffer);
 
     return line;
 }
+
+
+
+
 
 int main()
 {
