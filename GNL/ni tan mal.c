@@ -6,7 +6,7 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/15 14:38:12 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/15 20:07:22 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,100 +47,165 @@ char	*ft_strdup(const char *s1)
 	return ((dup));
 }
 
-char	*get_next_line(int fd)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t totalbytesread = 0;
-	size_t buffer_size = BUFFER_SIZE;
-	char *buffer = (char *)malloc(buffer_size * sizeof(char));
+	int				i;
+	unsigned char	*str2;
 
-	if (buffer == NULL)
-		return (NULL);
-	int bytesread = 1; // Inicializado a 1 para entrar en el bucle
-
-	while (bytesread > 0)
+	i = 0;
+	str2 = (unsigned char *)str;
+	while (str2[i] != '\0')
 	{
-		bytesread = read(fd, buffer + totalbytesread, buffer_size);
+		if (str2[i] == (unsigned char)c)
+			return ((char *)&str2[i]);
+		i++;
+	}
+	if (str2[i] == (unsigned char)c)
+		return ((char *)&str2[i]);
+	return (NULL);
+}
 
-		if (bytesread > 0)
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	char	*s;
+	char	*d;
+	size_t	i;
+
+	s = (char *)src;
+	d = (char *)dest;
+	i = 0;
+	if (src == 0 && dest == 0)
+		return (0);
+	if (d > s)
+		while (n-- > 0)
+			d[n] = s[n];
+	else
+	{
+		while (i < n)
 		{
-			if (buffer[totalbytesread] == '\n' || buffer[totalbytesread] == '\r')
-			{
-				buffer[totalbytesread] = '\0'; // Reemplaza '\n' o '\r' con '\0'
-				char *line = ft_strdup(buffer);
-				if (line == NULL)
-				{
-					free(buffer);
-					return (NULL);
-				}
-
-				totalbytesread++;
-				return (line);
-			}
-
-			totalbytesread++;
-
-			if (totalbytesread >= buffer_size - 1)
-			{
-				char *temp = (char *)malloc((buffer_size * 2 + 1) * sizeof(char));
-				if (temp == NULL)
-				{
-					free(buffer);
-					return (NULL);
-				}
-
-				size_t i = 0;
-				while (i < buffer_size)
-				{
-					temp[i] = buffer[i];
-					i++;
-				}
-
-				free(buffer);
-				buffer = temp;
-				buffer_size *= 2;
-			}
+			d[i] = s[i];
+			i++;
 		}
 	}
-	if (totalbytesread == 0)
+	return (dest);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*result;
+	int		i;
+	int		j;
+
+	if (!s2)
+		return (NULL);
+	if (!s1)
+		s1 = malloc(1 * sizeof(char));
+	if (!s1)
+		return (NULL);
+	s1 = 0;
+	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		free(buffer);
+		result[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		result[i + j] = s2[j];
+		j++;
+	}
+	result[i + j] = '\0';
+	free(s1);
+	return (result);
+}
+
+char	*ft_strncpy(char *dest, const char *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*est = 0;
+	char		*buff;
+	int			bytes_read;
+	int			i;
+	char		*line;
+	char		*tmp;
+
+	buff = malloc(BUFFER_SIZE + 1 * sizeof(char));
+	if (!buff)
+		return (NULL);
+	bytes_read = 1;
+	while (!est || bytes_read > 0 && !ft_strchr(buff, '\n'))
+	{
+		bytes_read = read(fd, buff, BUFFER_SIZE);
+		printf("mi buffer: %s", buff);
+		if (bytes_read < 0)
+		{
+			free(buff);
+			free(est);
+		}
+		buff[bytes_read] = '\0';
+		est = ft_strjoin(est, buff);
+		if (!est)
+			return (free (buff), NULL);
+	}
+	free (buff);
+	i = 0;
+	while (est[i] != '\0' && est[i] != '\n')
+		i++;
+	tmp = malloc((i + 1) * sizeof(char));
+	if (!tmp)
+		return (NULL);
+	ft_strncpy(tmp, est, i);
+	tmp[i] = '\0';
+	line = ft_strdup(tmp);
+	if (est[i] != '\0')
+		ft_memmove(est, est + i, ft_strlen(est + i) + 1);
+	else
+		est[0] = '\0';
+	if (est[0] == '\0' && bytes_read == 0)
+	{
+		free (est);
 		return (NULL);
 	}
-	char *line = ft_strdup(buffer);
-	free(buffer);
 	return (line);
 }
 
-
-
-
-
-int main()
+int	main(void)
 {
-    // Supongamos que fd es el descriptor de archivo que deseas leer.
-    int fd = open("fd1.txt", O_RDONLY);
+	int fd = open("fd1.txt", O_RDONLY);
+	char *line;
 
-    if (fd == -1)
-    {
-        perror("Error al abrir el archivo");
-        return (1);
-    }
-
-    char *line;
-
-    // Llamar a get_next_line en un bucle while
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        // Imprimir la línea leída
-        printf("%s\n", line);
-
-        // Liberar la memoria asignada para la línea
-        free(line);
-    }
-
-    // Cerrar el descriptor de archivo al finalizar la lectura
-    close(fd);
-
-    return (0);
+	if (fd == -1)
+	{
+		perror("Error al abrir el archivo");
+		return (1);
+	}
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close(fd);
+	return (0);
 }
 
