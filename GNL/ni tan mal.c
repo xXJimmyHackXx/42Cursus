@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ni tan mal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/14 19:37:37 by marvin           ###   ########.fr       */
+/*   Updated: 2023/11/15 14:38:12 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strlen(const char *str)
 	i = 0;
 	while (str[i] != '\0')
 		i++;
-	return (i);
+	return ((i));
 }
 
 char	*ft_strdup(const char *s1)
@@ -37,84 +37,78 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	dup = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!dup)
-		return (NULL);
+		return ((NULL));
 	while (s1[i])
 	{
 		dup[i] = s1[i];
 		i++;
 	}
 	dup[i] = '\0';
-	return (dup);
+	return ((dup));
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-    size_t totalbytesread = 0;
-    size_t buffer_size = BUFFER_SIZE;
-    char *buffer = (char *)malloc(buffer_size * sizeof(char));
+	size_t totalbytesread = 0;
+	size_t buffer_size = BUFFER_SIZE;
+	char *buffer = (char *)malloc(buffer_size * sizeof(char));
 
-    if (buffer == NULL)
-    {
-        return NULL;
-    }
+	if (buffer == NULL)
+		return (NULL);
+	int bytesread = 1; // Inicializado a 1 para entrar en el bucle
 
-    int bytesread = 1; // Inicializado a 1 para entrar en el bucle
+	while (bytesread > 0)
+	{
+		bytesread = read(fd, buffer + totalbytesread, buffer_size);
 
-    while (bytesread > 0)
-    {
-        bytesread = read(fd, buffer + totalbytesread, 1);
+		if (bytesread > 0)
+		{
+			if (buffer[totalbytesread] == '\n' || buffer[totalbytesread] == '\r')
+			{
+				buffer[totalbytesread] = '\0'; // Reemplaza '\n' o '\r' con '\0'
+				char *line = ft_strdup(buffer);
+				if (line == NULL)
+				{
+					free(buffer);
+					return (NULL);
+				}
 
-        if (bytesread > 0)
-        {
-            if (buffer[totalbytesread] == '\n' || buffer[totalbytesread] == '\r')
-            {
-                buffer[totalbytesread] = '\0'; // Reemplaza '\n' o '\r' con '\0'
-                char *line = ft_strdup(buffer);
-                if (line == NULL)
-                {
-                    free(buffer);
-                    return NULL;
-                }
+				totalbytesread++;
+				return (line);
+			}
 
-                totalbytesread++;
-                return line;
-            }
+			totalbytesread++;
 
-            totalbytesread++;
+			if (totalbytesread >= buffer_size - 1)
+			{
+				char *temp = (char *)malloc((buffer_size * 2 + 1) * sizeof(char));
+				if (temp == NULL)
+				{
+					free(buffer);
+					return (NULL);
+				}
 
-            if (totalbytesread >= buffer_size - 1)
-            {
-                char *temp = (char *)malloc((buffer_size * 2 + 1) * sizeof(char));
-                if (temp == NULL)
-                {
-                    free(buffer);
-                    return NULL;
-                }
+				size_t i = 0;
+				while (i < buffer_size)
+				{
+					temp[i] = buffer[i];
+					i++;
+				}
 
-                size_t i = 0;
-                while (i < buffer_size)
-                {
-                    temp[i] = buffer[i];
-                    i++;
-                }
-
-                free(buffer);
-                buffer = temp;
-                buffer_size *= 2;
-            }
-        }
-    }
-
-    if (totalbytesread == 0)
-    {
-        free(buffer);
-        return NULL;
-    }
-
-    char *line = ft_strdup(buffer);
-    free(buffer);
-
-    return line;
+				free(buffer);
+				buffer = temp;
+				buffer_size *= 2;
+			}
+		}
+	}
+	if (totalbytesread == 0)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	char *line = ft_strdup(buffer);
+	free(buffer);
+	return (line);
 }
 
 
@@ -129,7 +123,7 @@ int main()
     if (fd == -1)
     {
         perror("Error al abrir el archivo");
-        return 1;
+        return (1);
     }
 
     char *line;
@@ -147,6 +141,6 @@ int main()
     // Cerrar el descriptor de archivo al finalizar la lectura
     close(fd);
 
-    return 0;
+    return (0);
 }
 
