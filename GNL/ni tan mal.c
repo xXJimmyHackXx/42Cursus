@@ -6,7 +6,7 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/16 12:04:01 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/16 14:19:31 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ char	*get_next_line(int fd)
 	if (!buff)
 		return (NULL);
 	bytes_read = 1;
-	while (!est || bytes_read > 0 && !ft_strchr(buff, '\n'))
+	while (bytes_read > 0 && !ft_strchr(buff, '\n'))
 	{
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read <= 0)
@@ -163,9 +163,9 @@ char	*get_next_line(int fd)
 				free(est);
 			return (NULL);
 		}
-		buff[bytes_read] = '\0';
-		printf("mi buffer: %s", buff);
+		buff[bytes_read + 6] = '\0';
 		est = ft_strjoin(est, buff);
+		// printf("mi buff: %s", est);
 		if (!est)
 			return (free (buff), NULL);
 	}
