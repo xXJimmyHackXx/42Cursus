@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ni tan mal.c                                       :+:      :+:    :+:   */
+/*   pruebas.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/16 14:19:31 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/16 18:05:56 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define BUFFER_SIZE 32
+#define BUFFER_SIZE 156
+
+void leaks()
+{
+	system("leaks pruebas.c");
+}
 
 size_t	ft_strlen(const char *str)
 {
@@ -142,52 +147,31 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 
 char	*get_next_line(int fd)
 {
-	static char	*est = 0;
-	char		*buff;
+	static char	*est = NULL;
+	char		buff[BUFFER_SIZE + 1];
 	int			bytes_read;
-	int			i;
+	char		*newline_pos;
 	char		*line;
-	char		*tmp;
 
-	buff = malloc(BUFFER_SIZE + 1 * sizeof(char));
-	if (!buff)
-		return (NULL);
-	bytes_read = 1;
-	while (bytes_read > 0 && !ft_strchr(buff, '\n'))
+	if (!est)
+		est = ft_strdup("");
+	while ((newline_pos = ft_strchr(est, '\n')) == NULL)
 	{
 		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read <= 0)
-		{
-			free(buff);
-			if (bytes_read < 0)
-				free(est);
-			return (NULL);
-		}
-		buff[bytes_read + 6] = '\0';
+			break ;
+		buff[bytes_read] = '\0';
 		est = ft_strjoin(est, buff);
-		// printf("mi buff: %s", est);
-		if (!est)
-			return (free (buff), NULL);
 	}
-	free (buff);
-	i = 0;
-	while (est[i] != '\0' && est[i] != '\n')
-		i++;
-	tmp = malloc((i + 1) * sizeof(char));
-	if (!tmp)
-		return (NULL);
-	ft_strncpy(tmp, est, i);
-	tmp[i] = '\0';
-	line = ft_strdup(tmp);
-	if (est[i] != '\0')
-		ft_memmove(est, est + i, ft_strlen(est + i) + 1);
-	else
-		est[0] = '\0';
-	if (est[0] == '\0' && bytes_read == 0)
+	if (newline_pos == NULL && bytes_read <= 0)
 	{
-		free (est);
-		return (NULL);
+		if (bytes_read < 0 || !*est)
+			return (NULL);
+		newline_pos = est + ft_strlen(est);
 	}
+	*newline_pos = '\0';
+	line = ft_strdup(est);
+	est = ft_strdup(newline_pos + 1);
 	return (line);
 }
 
@@ -203,7 +187,7 @@ int	main(void)
 	}
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s", line);
+		printf("%s\n", line);
 		free(line);
 	}
 	close(fd);
