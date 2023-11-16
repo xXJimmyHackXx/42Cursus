@@ -6,7 +6,7 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/15 20:07:22 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/16 12:04:01 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*result;
 	int		i;
@@ -102,7 +102,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		s1 = malloc(1 * sizeof(char));
 	if (!s1)
 		return (NULL);
-	s1 = 0;
 	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!result)
 		return (NULL);
@@ -157,13 +156,15 @@ char	*get_next_line(int fd)
 	while (!est || bytes_read > 0 && !ft_strchr(buff, '\n'))
 	{
 		bytes_read = read(fd, buff, BUFFER_SIZE);
-		printf("mi buffer: %s", buff);
-		if (bytes_read < 0)
+		if (bytes_read <= 0)
 		{
 			free(buff);
-			free(est);
+			if (bytes_read < 0)
+				free(est);
+			return (NULL);
 		}
 		buff[bytes_read] = '\0';
+		printf("mi buffer: %s", buff);
 		est = ft_strjoin(est, buff);
 		if (!est)
 			return (free (buff), NULL);
