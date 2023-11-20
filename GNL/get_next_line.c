@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/20 17:56:24 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/20 20:05:44 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+// #include <stdio.h>
+// #define BUFFER_SIZE 32
+
+// int	main(void)
+// {
+// 	int fd = open("fd1.txt", O_RDONLY);
+// 	char *line;
+
+// 	if (fd == -1)
+// 	{
+// 		printf("Error al abrir el archivo");
+// 		return (1);
+// 	}
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
 
 char	*ft_readed_line(char *start)
 {
@@ -86,6 +107,9 @@ char	*get_next_line(int fd)
 		if (fd_read == -1)
 		{
 			free(tmp);
+			if (start_str)
+				free(start_str);
+			start_str = NULL;
 			return (NULL);
 		}
 		tmp[fd_read] = '\0';
@@ -95,24 +119,4 @@ char	*get_next_line(int fd)
 	tmp = ft_readed_line(start_str);
 	start_str = ft_move_start(start_str);
 	return (tmp);
-}
-
-
-int	main(void)
-{
-	int fd = open("fd1.txt", O_RDONLY);
-	char *line;
-
-	if (fd == -1)
-	{
-		perror("Error al abrir el archivo");
-		return (1);
-	}
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		printf("%s\n", line);
-		free(line);
-	}
-	close(fd);
-	return (0);
 }

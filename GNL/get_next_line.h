@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:13:19 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/20 17:56:53 by jimmy            ###   ########.fr       */
+/*   Updated: 2023/11/20 18:50:14 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 size_t	ft_strlen(char *str);
 char	*get_next_line(int fd);
