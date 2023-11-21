@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:12:05 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/21 16:06:27 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:55:46 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
+char	*ft_free(char *s1, char *rtn)
+{
+	if (s1)
+	{
+		free(s1);
+		s1 = NULL;
+	}
+	return (rtn);
+}
+
 char	*ft_strjoin(char *start, char *buff)
 {
 	char	*ptr;
@@ -63,8 +73,7 @@ char	*ft_strjoin(char *start, char *buff)
 		free(start);
 	}
 	ptr = ft_join(ptr, start, buff);
-	free(start);
-	return (ptr);
+	return (ft_free(start, ptr));
 }
 
 char	*ft_join(char *dest, char *s1, char *s2)

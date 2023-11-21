@@ -6,12 +6,16 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:13:19 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/20 18:50:14 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:59:23 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -24,5 +28,6 @@ char	*ft_strchr(char *s, int c);
 char	*ft_move_start(char *start);
 char	*ft_strjoin(char *start, char *buff);
 char	*ft_join(char *dest, char *s1, char *s2);
+char	*ft_free(char *s1, char *rtn);
 
 #endif
