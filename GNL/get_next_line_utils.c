@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:12:05 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/20 20:00:01 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:06:27 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ char	*ft_strjoin(char *start, char *buff)
 		return (NULL);
 	ptr = (char *)malloc(1 + ft_strlen(start) + ft_strlen(buff) * sizeof(char));
 	if (!ptr)
+	{
 		return (NULL);
+		free(start);
+	}
 	ptr = ft_join(ptr, start, buff);
 	free(start);
 	return (ptr);

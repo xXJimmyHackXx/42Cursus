@@ -6,16 +6,21 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/20 20:05:44 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/11/21 18:24:30 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-// #include <stdio.h>
+#include <stdio.h>
 // #define BUFFER_SIZE 32
 
+// void leaks()
+// {
+// 	system("leaks -q a.out");
+// }
 // int	main(void)
 // {
+// 	// atexit(leaks);
 // 	int fd = open("fd1.txt", O_RDONLY);
 // 	char *line;
 
@@ -109,11 +114,14 @@ char	*get_next_line(int fd)
 			free(tmp);
 			if (start_str)
 				free(start_str);
-			start_str = NULL;
-			return (NULL);
+			return (start_str = NULL, NULL);
 		}
 		tmp[fd_read] = '\0';
-		start_str = ft_strjoin(start_str, tmp);
+		start_str = ft_strjoin(start_str, tmp); if (!start_str)
+		{
+			free(start_str);
+			return (start_str = NULL, NULL);
+		}
 	}
 	free(tmp);
 	tmp = ft_readed_line(start_str);
