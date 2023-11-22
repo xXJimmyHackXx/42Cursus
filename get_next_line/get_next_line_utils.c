@@ -6,7 +6,7 @@
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 18:12:05 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/21 19:55:46 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:48:38 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-char	*ft_free(char *s1, char *rtn)
+char	*ft_free(char **s1, char *rtn)
 {
-	if (s1)
+	if (s1 && *s1)
 	{
-		free(s1);
-		s1 = NULL;
+		free(*s1);
+		*s1 = NULL;
 	}
 	return (rtn);
 }
@@ -61,19 +61,17 @@ char	*ft_strjoin(char *start, char *buff)
 
 	if (!start)
 	{
-		start = (char *)malloc(1 * sizeof(char));
-		start[0] = '\0';
+		start = malloc(1 * sizeof(char));
+		if (start)
+			start[0] = '\0';
 	}
 	if (!start || !buff)
 		return (NULL);
-	ptr = (char *)malloc(1 + ft_strlen(start) + ft_strlen(buff) * sizeof(char));
+	ptr = malloc(1 + ft_strlen(start) + ft_strlen(buff) * sizeof(char));
 	if (!ptr)
-	{
-		return (NULL);
-		free(start);
-	}
+		return (buff = NULL, ft_free(&start, NULL));
 	ptr = ft_join(ptr, start, buff);
-	return (ft_free(start, ptr));
+	return (ft_free(&start, ptr));
 }
 
 char	*ft_join(char *dest, char *s1, char *s2)
