@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarci2 <jagarci2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:12:36 by jimmy             #+#    #+#             */
-/*   Updated: 2023/11/28 15:46:05 by jagarci2         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:31:33 by jagarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 // #include <stdio.h>
 
 // // void leaks()
@@ -21,6 +21,11 @@
 // {
 // 	// atexit(leaks);
 // 	int fd = open("fd1.txt", O_RDONLY);
+// 	int fd2 = open("fd2.txt", O_RDONLY);
+// 	int fd3 = open("fd3.txt", O_RDONLY);
+// 	int fd4 = open("fd4.txt", O_RDONLY);
+// 	int fd5 = open("fd5.txt", O_RDONLY);
+// 	int fd6 = open("fd6.txt", O_RDONLY);
 // 	char *line;
 
 // 	if (fd == -1)
@@ -33,7 +38,31 @@
 // 		printf("%s", line);
 // 		free(line);
 // 	}
-// 	close(fd);
+// 	while ((line = get_next_line(fd2)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	while ((line = get_next_line(fd3)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	while ((line = get_next_line(fd4)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	while ((line = get_next_line(fd5)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	while ((line = get_next_line(fd6)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
 // 	return (0);
 // }
 
@@ -120,20 +149,20 @@ char	*read_file(int fd, char **start_str)
 char	*get_next_line(int fd)
 {
 	char		*tmp;
-	static char	*start_str;
+	static char	*start_str[4096];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	tmp = read_file(fd, &start_str);
+	tmp = read_file(fd, &start_str[fd]);
 	if (!tmp)
 	{
-		if (start_str)
-			ft_free(&start_str, NULL);
+		if (start_str[fd])
+			ft_free(&start_str[fd], NULL);
 		return (NULL);
 	}
-	tmp = ft_readed_line(start_str);
+	tmp = ft_readed_line(start_str[fd]);
 	if (!tmp)
-		return (ft_free(&start_str, NULL));
-	start_str = ft_move_start(start_str);
+		return (ft_free(&start_str[fd], NULL));
+	start_str[fd] = ft_move_start(start_str[fd]);
 	return (tmp);
 }
