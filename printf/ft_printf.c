@@ -13,70 +13,75 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-// void	ft_putchar(char a)
-// {
-// 	write (1, &a, 1);
-// }
+void	base_change(int n)
+{
+	
+}
 
-// int	print_char(char a)
-// {
-// 	ft_putchar(a);
-// 	return (1);
-// }
+void	ft_putchar(char a)
+{
+	write (1, &a, 1);
+}
 
-// int	print_str(char *str)
-// {
-// 	int	i;
+int	print_char(char a)
+{
+	ft_putchar(a);
+	return (1);
+}
 
-// 	i = 0;
-// 	while (str[i] != '\0')
-// 	{
-// 		print_char(str[i]);
-// 		i++;
-// 	}
-// 	return (1);
-// }
+int	print_str(char *str)
+{
+	int	i;
 
-// static int	ft_var_type(const char *str, void *ptr)
-// {
-// 	int	i;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		print_char(str[i]);
+		i++;
+	}
+	return (1);
+}
 
-// 	i = 0;
-// 	if (*str == 'c')
-// 		i += print_char((int)ptr);
-// 	if (*str == 's')
-// 		i += print_str((int)ptr);
-// 	if (*str == 'p')
-// 		i += print_ptr((int)ptr);
-// 	if (*str == 'd')
-// 		i += print_dec((int)ptr);
-// 	if (*str == 'i')
-// 		i += print_whole((int)ptr);
-// 	if (*str == 'u')
-// 		i += print_char((int)ptr);
-// 	if (*str == 'x')
-// 		i += print_hex_min((int)ptr);
-// 	if (*str == 'X')
-// 		i += print_hex_cap((int)ptr);
-// 	if (*str == '%')
-// 		i += print_prc((int)ptr);
-// }
+static int	ft_var_type(const char *str, void *ptr)
+{
+	int	i;
 
-// int	ft_printf(char const *str, ...)
-// {
-// 	int		i;
-// 	va_list	ptr;
+	i = 0;
+	if (*str == 'c')
+		i += print_char((int)ptr);
+	if (*str == 's')
+		i += print_str((int)ptr);
+	if (*str == 'p')
+		i += print_ptr((int)ptr);
+	if (*str == 'd')
+		i += print_dec((int)ptr);
+	if (*str == 'i')
+		i += print_whole((int)ptr);
+	if (*str == 'u')
+		i += print_char((int)ptr);
+	if (*str == 'x')
+		i += print_hex_min((int)ptr);
+	if (*str == 'X')
+		i += print_hex_cap((int)ptr);
+	if (*str == '%')
+		i += print_prc((int)ptr);
+}
 
-// 	va_start (ptr, str);
-// 	while (str)
-// 	{
-// 		if (str[i] == "%")
-// 		{
-// 			i++;
-// 			ft_var_type()
-// 		}
-// 	}
-// }
+int	ft_printf(char const *str, ...)
+{
+	int		i;
+	va_list	ptr;
+
+	va_start (ptr, str);
+	while (str)
+	{
+		if (str[i] == "%")
+		{
+			i++;
+			ft_var_type();
+		}
+	}
+}
 
 // int main()
 // {
@@ -91,7 +96,3 @@
 
 //     return 0;
 // }
-int main()
-{
-	printf("ptr%p" 'hola')
-}
